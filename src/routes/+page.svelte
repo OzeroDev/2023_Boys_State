@@ -16,14 +16,14 @@
 -->
 
 <script lang="ts">
+	import '../app.postcss';
 	
 	import type { LatLngExpression } from 'leaflet';
 	import Leaflet from '$lib/Leaflet.svelte';
-	const initialView: LatLngExpression = [51.514244, 7.468429]; // Dortmund, Germany
-
+	const initialView: LatLngExpression = [46.2, -94.6859]; // Minnesota
 </script>
 
 <div class="w-full h-screen">
-	<Leaflet view={initialView} zoom={14}>
+	<Leaflet view={initialView} zoom={6}>
 	</Leaflet>
 </div>
