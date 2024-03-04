@@ -62,7 +62,8 @@
 		{/each}
 		-->
 
-		<Markers customImg={false} latLngDict={markersDictionary} />
+		<Markers customImg={true} latLngDict={markersDictionary} />
+>
 		
 		<Marker customImg={true} latLng={stjLocation}>
 
@@ -73,4 +74,3 @@
 	</Leaflet>
 
 </div>
-

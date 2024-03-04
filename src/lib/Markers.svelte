@@ -1,6 +1,15 @@
 <script lang="ts">
 	import { onMount, onDestroy, getContext, setContext } from 'svelte';
 	import L from 'leaflet';
+	import 'leaflet/dist/leaflet.css';
+    
+    //import iconRetinaUrl from '$lib/assets/marker-icon-2x.png';
+    //import iconUrl from '$lib/assets/marker-icon.png';
+    //import shadowUrl from '$lib/assets/marker-shadow.png';
+
+    import iconRetinaUrl from '/images/marker-icon-2x.png';
+    import iconUrl from '/images/marker-icon.png';
+    import shadowUrl from '/images/marker-shadow.png';
 
 
     export let customImg: boolean;
@@ -21,15 +30,20 @@
 		if (map) {
             markers['All Participants'] = L.layerGroup().addTo(map)
             if (customImg){
-                let icon = L.divIcon({
-                    html: markerElement,
-                    className: 'map-marker',
-                    iconAnchor: [20, 25]
+                const iconDefault = L.icon({
+                    iconRetinaUrl,
+                    iconUrl,
+                    shadowUrl,
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    tooltipAnchor: [16, -28],
+                    shadowSize: [41, 41]
                 });
                 for (const [city, locations] of Object.entries(latLngDict)){
                     markers[city] = L.layerGroup();
                     locations.forEach(location => {
-                        L.marker(location, { icon }).addTo(markers[city]).addTo(markers['All Participants'])
+                        L.marker(location, { icon: iconDefault }).addTo(markers[city]).addTo(markers['All Participants'])
                     });
 
                 }
@@ -61,3 +75,4 @@
 		<slot />
 	{/if}
 </div>
+

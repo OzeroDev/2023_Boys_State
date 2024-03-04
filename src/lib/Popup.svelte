@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy, getContext, setContext } from 'svelte';
 	import L from 'leaflet';
+	import 'leaflet/dist/leaflet.css';
 
 	export let width: number;
 	export let height: number;
